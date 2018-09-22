@@ -21,6 +21,7 @@ public class AboutUs extends AppCompatActivity {
             public void onClick(View v) {
                 Intent aboutToMain = new Intent(AboutUs.this,MainActivity.class);
                 AboutUs.this.startActivity(aboutToMain);
+                
             }
         });
 
