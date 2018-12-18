@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">\
+
+    <item
+        android:id="@+id/nav_events"
+        android:icon="@drawable/ic_event_available_black_24dp"
+        android:title="Events"
+        />
+    <item
+        android:id="@+id/nav_officers"
+        android:icon="@drawable/ic_face_black_24dp"
+        android:title="Officers"
+        />
+    <item
+        android:id="@+id/nav_photos"
+        android:icon="@drawable/ic_photo_library_black_24dp"
+        android:title="Photos"
+        />
+    <item
+        android:id="@+id/nav_more"
+        android:icon="@drawable/ic_more_horiz_black_24dp"
+        android:title="More"
+        />
+
+
+
+</menu>
