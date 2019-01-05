@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 
 public class AboutUs extends AppCompatActivity {
 
     Button bToMain;
+    public WebView officerWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +23,16 @@ public class AboutUs extends AppCompatActivity {
             public void onClick(View v) {
                 Intent aboutToMain = new Intent(AboutUs.this,MainActivity.class);
                 AboutUs.this.startActivity(aboutToMain);
-                
+
+
             }
         });
 
 
+
+        WebView myWebView = new WebView(AboutUs.this);
+        setContentView(myWebView);
+        myWebView.loadUrl("http://org.osu.edu/jso/about/officers/");
 
     }
 }
