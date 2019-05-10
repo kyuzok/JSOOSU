@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "793879730924",
+    "firebase_url": "https://jso-app-25228.firebaseio.com",
+    "project_id": "jso-app-25228",
+    "storage_bucket": "jso-app-25228.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793879730924:android:09195a234778cd39",
+        "android_client_info": {
+          "package_name": "com.spicystar.jsoosu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793879730924-600v5u5j62tm6li3lhqrs9r2iparnu74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGpI7sY1mlLICy6Irkla67OFLGfUA3dAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793879730924-600v5u5j62tm6li3lhqrs9r2iparnu74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
