@@ -1,6 +1,8 @@
 package com.spicystar.jsoosu;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,10 +26,25 @@ public class MoreFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_more, container, false);
+        Name = v.findViewById(R.id.etName);
+        Password = v.findViewById(R.id.etPass);
+        Login = v.findViewById(R.id.btnLogin);
 
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validate(Name.getText().toString(), Password.getText().toString())) {
 
+                    moveToNewActivity();
 
-        return inflater.inflate(R.layout.fragment_more, container, false);
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Login Successful");
+                    builder.setMessage("We did it!");
+                }
+            }
+        });
+
+        return v;
 
     }
 
@@ -38,4 +55,18 @@ public class MoreFragment extends Fragment {
         }
         return ret;
     }
+
+
+    private void moveToNewActivity () {
+
+        Intent i = new Intent(getActivity(), AboutUs.class);
+        startActivity(i);
+        getActivity();
+
+    }
+
+
+
 }
+
+

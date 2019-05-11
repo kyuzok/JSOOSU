@@ -10,7 +10,6 @@ import android.widget.Button;
 public class AboutUs extends AppCompatActivity {
 
     Button bToMain;
-    public WebView officerWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +26,6 @@ public class AboutUs extends AppCompatActivity {
 
             }
         });
-
-
-
-        WebView myWebView = new WebView(AboutUs.this);
-        setContentView(myWebView);
-        myWebView.loadUrl("http://org.osu.edu/jso/about/officers/");
 
     }
 }
