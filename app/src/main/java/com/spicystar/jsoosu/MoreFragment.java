@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+import android.text.TextUtils;
+
+import org.w3c.dom.Text;
 
 public class MoreFragment extends Fragment {
 
@@ -31,10 +35,19 @@ public class MoreFragment extends Fragment {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate(Name.getText().toString(), Password.getText().toString())) {
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle("Login Successful");
-                    builder.setMessage("We did it!");
+                String name = Name.getText().toString().trim();
+                String pass = Password.getText().toString().trim();
+
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pass)) {
+                    Toast.makeText(getActivity(),"At least one box is empty", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (validate(Name.getText().toString(), Password.getText().toString())) {
+                    Toast.makeText(getActivity(),"Login Successful", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (!validate(Name.getText().toString(), Password.getText().toString())) {
+                    Toast.makeText(getActivity(),"Login Unsuccessful", Toast.LENGTH_SHORT).show();
                 }
             }
         });
