@@ -23,9 +23,10 @@ public class MoreFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        Name = (EditText)getView().findViewById(R.id.etName);
-        Password = (EditText)getView().findViewById(R.id.etPass);
-        Login = (Button)getView().findViewById(R.id.btnLogin);
+        View v = inflater.inflate(R.layout.fragment_more, container, false);
+        Name = (EditText)v.findViewById(R.id.etName);
+        Password = (EditText)v.findViewById(R.id.etPass);
+        Login = (Button)v.findViewById(R.id.btnLogin);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +39,7 @@ public class MoreFragment extends Fragment {
             }
         });
 
-        return inflater.inflate(R.layout.fragment_more, container, false);
+        return v;
 
     }
 
