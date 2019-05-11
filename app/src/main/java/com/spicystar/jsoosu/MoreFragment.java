@@ -1,6 +1,7 @@
 package com.spicystar.jsoosu;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,9 +29,9 @@ public class MoreFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_more, container, false);
-        Name = (EditText)v.findViewById(R.id.etName);
-        Password = (EditText)v.findViewById(R.id.etPass);
-        Login = (Button)v.findViewById(R.id.btnLogin);
+        Name = v.findViewById(R.id.etName);
+        Password = v.findViewById(R.id.etPass);
+        Login = v.findViewById(R.id.btnLogin);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,13 +43,8 @@ public class MoreFragment extends Fragment {
                     Toast.makeText(getActivity(),"At least one box is empty", Toast.LENGTH_SHORT).show();
                 }
 
-                else if (validate(Name.getText().toString(), Password.getText().toString())) {
-                    Toast.makeText(getActivity(),"Login Successful", Toast.LENGTH_SHORT).show();
-                }
+                validate(name,pass);
 
-                else if (!validate(Name.getText().toString(), Password.getText().toString())) {
-                    Toast.makeText(getActivity(),"Login Unsuccessful", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
@@ -56,11 +52,25 @@ public class MoreFragment extends Fragment {
 
     }
 
-    public boolean validate(String userName, String userPassword) {
-        boolean ret = false;
+    private void validate(String userName, String userPassword) {
         if ((userName.equals("JSO")) && (userPassword.equals("634556"))) {
-            ret = true;
+            //shows that the login is successful in a message then moves to a newActivity
+            Toast.makeText(getActivity(),"Login Successful", Toast.LENGTH_SHORT).show();
+            moveToNewActivity();
         }
-        return ret;
+        else {
+            //error message saying that the login was unsuccessful
+            Toast.makeText(getActivity(),"Login Unsuccessful", Toast.LENGTH_SHORT).show();
+        }
+
     }
+
+    private void moveToNewActivity () {
+
+        Intent i = new Intent(getActivity(), AboutUs.class);
+        startActivity(i);
+        getActivity();
+
+    }
+
 }
