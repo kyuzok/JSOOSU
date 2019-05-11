@@ -1,8 +1,6 @@
 package com.spicystar.jsoosu;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+import android.text.TextUtils;
+
+import org.w3c.dom.Text;
 
 public class MoreFragment extends Fragment {
 
@@ -26,20 +28,26 @@ public class MoreFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_more, container, false);
-        Name = v.findViewById(R.id.etName);
-        Password = v.findViewById(R.id.etPass);
-        Login = v.findViewById(R.id.btnLogin);
+        Name = (EditText)v.findViewById(R.id.etName);
+        Password = (EditText)v.findViewById(R.id.etPass);
+        Login = (Button)v.findViewById(R.id.btnLogin);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate(Name.getText().toString(), Password.getText().toString())) {
+                String name = Name.getText().toString().trim();
+                String pass = Password.getText().toString().trim();
 
-                    moveToNewActivity();
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pass)) {
+                    Toast.makeText(getActivity(),"At least one box is empty", Toast.LENGTH_SHORT).show();
+                }
 
-                    final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle("Login Successful");
-                    builder.setMessage("We did it!");
+                else if (validate(Name.getText().toString(), Password.getText().toString())) {
+                    Toast.makeText(getActivity(),"Login Successful", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (!validate(Name.getText().toString(), Password.getText().toString())) {
+                    Toast.makeText(getActivity(),"Login Unsuccessful", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -55,18 +63,4 @@ public class MoreFragment extends Fragment {
         }
         return ret;
     }
-
-
-    private void moveToNewActivity () {
-
-        Intent i = new Intent(getActivity(), AboutUs.class);
-        startActivity(i);
-        getActivity();
-
-    }
-
-
-
 }
-
-
