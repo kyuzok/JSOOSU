@@ -10,7 +10,7 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav"/>
+        ></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -20,7 +20,7 @@
         app:menu="@menu/bottom_nav"
         android:background="?android:attr/windowBackground"/>
 
-        />
+
     <!--
     <Button
         android:layout_width="wrap_content"
