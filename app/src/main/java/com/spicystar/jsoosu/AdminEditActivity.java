@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.content.Intent;
 
 public class AdminEditActivity extends AppCompatActivity implements View.OnClickListener {
-
+//
 
     private Button AddEvent;
     private Button EditEvent;
