@@ -57,7 +57,7 @@ public class LoginPage extends AppCompatActivity {
 
         private void moveToNewActivity(){
 
-            Intent loginToAdmin = new Intent(LoginPage.this, AdminEditActivity.class);
+            Intent loginToAdmin = new Intent(LoginPage.this, AdminActivity.class);
             LoginPage.this.startActivity(loginToAdmin);
 
 
