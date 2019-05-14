@@ -14,10 +14,20 @@
 
     <Button
         android:id="@+id/btnLoginPage"
-        android:layout_width="wrap_content"
+        android:layout_width="223dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="124dp"
         android:text="Login" />
+
+    <Button
+        android:id="@+id/btnContactPage"
+        android:layout_width="219dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="186dp"
+        android:text="Contact Us" />
+
+
 
 </RelativeLayout>
