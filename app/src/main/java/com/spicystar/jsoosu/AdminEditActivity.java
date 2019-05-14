@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.content.Intent;
 
 public class AdminEditActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,6 +32,23 @@ public class AdminEditActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        if()
+
+       switch (v.getId()) {
+           case R.id.btnAddEvent:
+               Intent addPage = new Intent (this, EventAddActivity.class);
+               startActivity(addPage);
+               break;
+           case R.id.btnEditEvent:
+               Intent editPage = new Intent (this, EventEditActivity.class);
+               startActivity(editPage);
+               break;
+           case R.id.btnDeleteEvent:
+               Intent deletePage = new Intent(this, EventDeleteActivity.class);
+               startActivity(deletePage);
+               break;
+       }
+
+
+
     }
 }
