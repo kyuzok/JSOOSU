@@ -33,13 +33,14 @@ public class LoginPage extends AppCompatActivity {
                 String pass = Password.getText().toString().trim();
 
                 if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pass)) {
-                    Toast.makeText(getApplicationContext(),"At least one box is empty", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                    Toast.makeText(getApplicationContext(), "At least one box is empty", Toast.LENGTH_SHORT).show();
+                } else {
                     validate(name, pass);
                 }
             }
         });
+
+    }
 
         private void validate(String userName, String userPassword) {
             if ((userName.equals("JSO")) && (userPassword.equals("634556"))) {
@@ -56,12 +57,11 @@ public class LoginPage extends AppCompatActivity {
 
         private void moveToNewActivity(){
 
-            Intent i = new Intent(LoginPage.this, AboutUs.class);
-            startActivity(i);
+            Intent loginToAdmin = new Intent(LoginPage.this, AdminEditActivity.class);
+            LoginPage.this.startActivity(loginToAdmin);
 
 
         }
 
 
-    }
 }
