@@ -16,6 +16,7 @@ import android.text.TextUtils;
 
 public class MoreFragment extends Fragment {
 
+    private Button Login;
 
 
     @Nullable
@@ -24,6 +25,15 @@ public class MoreFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_more, container, false);
 
+        Login = getView().findViewById(R.id.btnLoginPage);
+        Login.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                    Intent loginPage = new Intent (getActivity(), LoginPage.class);
+                    startActivity(loginPage);
+                }
+        });
 
         return v;
 

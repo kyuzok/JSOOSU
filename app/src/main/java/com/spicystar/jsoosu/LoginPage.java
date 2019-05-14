@@ -24,7 +24,7 @@ public class LoginPage extends AppCompatActivity {
 
         Name = findViewById(R.id.etName);
         Password = findViewById(R.id.etPass);
-        Login = findViewById(R.id.btnLogin);
+        Login = findViewById(R.id.btnLoginTry);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
