@@ -42,12 +42,12 @@ public class MoreFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent contactPage = new Intent (getActivity(), ContactActivity.class);
-                startActivity(contactPage);
+                startActivity(contactPage); //
             }
         });
 
         return v;
 
     }
-    
+
 }
