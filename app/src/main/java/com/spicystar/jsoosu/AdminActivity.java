@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
-public class AdminEditActivity extends AppCompatActivity implements View.OnClickListener {
+public class AdminActivity extends AppCompatActivity implements View.OnClickListener {
 //
 
     private Button AddEvent;
@@ -16,7 +16,7 @@ public class AdminEditActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_edit);
+        setContentView(R.layout.activity_admin);
 
             AddEvent = findViewById(R.id.btnAddEvent);
             EditEvent = findViewById(R.id.btnEditEvent);

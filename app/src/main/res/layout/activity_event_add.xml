@@ -6,4 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".EventAddActivity">
 
+
+    <!-- Name -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvName"
+        android:text="Name"
+        android:textSize="20dp"
+        />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etName"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toRightOf="@id/tvName"
+        android:layout_marginLeft="10dp"
+        />
+
+    <!-- Date -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDate"
+        android:text="Date"
+        android:textSize="20dp"
+        />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etName"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toRightOf="@id/tvName"
+        android:layout_marginLeft="10dp"
+        />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvName"
+        android:text="Name"
+        android:textSize="20dp"
+        />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etName"
+        android:inputType="textPersonName"
+        app:layout_constraintLeft_toRightOf="@id/tvName"
+        android:layout_marginLeft="10dp"
+        />
+
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>
