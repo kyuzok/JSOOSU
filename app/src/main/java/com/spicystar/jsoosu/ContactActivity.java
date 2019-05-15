@@ -18,7 +18,7 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
 
-        sendBtn = (Button) findViewById(R.id.btnSendEmail);
+        sendBtn = findViewById(R.id.btnSendEmail);
         sendBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 sendEmail();

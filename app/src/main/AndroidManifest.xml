@@ -12,6 +12,7 @@
         <activity android:name=".EventDeleteActivity"/>
         <activity android:name=".EventEditActivity" />
         <activity android:name=".EventAddActivity" />
+        <activity android:name=".ContactActivity" />
         <activity android:name=".LoginPage" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".MainActivity">
