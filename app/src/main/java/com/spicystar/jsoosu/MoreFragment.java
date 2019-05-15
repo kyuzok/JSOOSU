@@ -29,6 +29,14 @@ public class MoreFragment extends Fragment {
         Login = (Button)v.findViewById(R.id.btnLoginPage);
         Contact = (Button)v.findViewById(R.id.btnContactPage);
 
+        Contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent contactPage = new Intent (getActivity(), ContactActivity.class);
+                startActivity(contactPage);
+            }
+        });
+
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,13 +46,6 @@ public class MoreFragment extends Fragment {
             }
         });
 
-        Contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent contactPage = new Intent (getActivity(), ContactActivity.class);
-                startActivity(contactPage); //
-            }
-        });
 
         return v;
 
