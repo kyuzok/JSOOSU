@@ -70,21 +70,12 @@ public class EventsFragment extends Fragment {
             btn.setAllCaps(false);
             linear.addView(btn);
 
-            btn.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    //removes button from view
-                    linear.removeView(v);
-                    //removes the data from database
-                    db.collection("Events").document(date).delete();
-                    return true;
-                }
-            });
+        }
 
 
 
 
 
 
-    }
+
 }

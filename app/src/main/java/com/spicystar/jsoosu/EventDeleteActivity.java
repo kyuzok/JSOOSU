@@ -1,5 +1,7 @@
 package com.spicystar.jsoosu;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -59,10 +61,22 @@ public class EventDeleteActivity extends AppCompatActivity {
         btn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                //removes button from view
-                linear.removeView(v);
-                //removes the data from database
-                db.collection("Events").document(name).delete();
+                AlertDialog.Builder confirmer = new AlertDialog.Builder(EventDeleteActivity.this);
+                confirmer.setMessage("Are you sure you want to delete this event?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //removes button from view
+                        linear.removeView(v);
+                        //removes the data from database
+                        db.collection("Events").document(name).delete();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
                 return true;
             }
         });
