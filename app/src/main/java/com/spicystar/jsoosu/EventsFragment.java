@@ -1,15 +1,19 @@
 package com.spicystar.jsoosu;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,7 +34,7 @@ public class EventsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_events, container, false);
 
-        linear = v.findViewById(R.id.linear);
+        linear = v.findViewById(R.id.linearLayout);
 
         db = FirebaseFirestore.getInstance();
 
@@ -40,35 +44,42 @@ public class EventsFragment extends Fragment {
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if (!queryDocumentSnapshots.isEmpty()) {
                     List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                    int i = 0;
                     for (DocumentSnapshot d : list) {
-
+                        String name = d.getString("Name");
                         String date = d.getString("Date");
-                        buttons(date);
+                        String startTime = d.getString("startTime");
+                        String endTime = d.getString("endTime");
+                        String location = d.getString("Location");
+                        String description = d.getString("Description");
 
+                        createEvent(name,date,startTime,endTime,location,description);
                     }
 
                 }
             }
         });
 
-        Button butt = new Button(getActivity());
-        butt.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        butt.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        linear.addView(butt);
-
 
         return v;
 
 
     }
-        private void buttons(final String date) {
+        private void createEvent(String name, String date, String startTime, String endTime, String location, String description) {
 
-            //create the buttons to show up for each document
-            Button btn = new Button(this.getActivity());
-            btn.setText(date);
-            btn.setAllCaps(false);
-            linear.addView(btn);
+            //sets the parameters and everything for the line/border
+            View line = new View(this.getActivity());
+            DisplayMetrics dm = getResources().getDisplayMetrics();
+            float height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, dm);
+            line.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,Math.round(height)));
+            line.setBackgroundColor(Color.BLACK);
+            linear.addView(line);
+
+            //making TextViews for each part of the event.
+            TextView eventTxt = new TextView(this.getActivity());
+            eventTxt.setText("Name:" + name + "\n" + "Date:" + date + "\n" + "StartTime:" + startTime
+                    + "\n" + "EndTime:" + endTime + "\n" + "Location:" + location + "\n" + "Description:" + description + "\n");
+            linear.addView(eventTxt);
+
 
         }
 

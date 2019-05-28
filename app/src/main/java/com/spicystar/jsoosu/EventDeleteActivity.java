@@ -60,7 +60,7 @@ public class EventDeleteActivity extends AppCompatActivity {
 
         btn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public boolean onLongClick(final View v) {
                 AlertDialog.Builder confirmer = new AlertDialog.Builder(EventDeleteActivity.this);
                 confirmer.setMessage("Are you sure you want to delete this event?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
