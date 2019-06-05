@@ -76,7 +76,8 @@ public class EventDeleteActivity extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-
+                AlertDialog alert1 = confirmer.create();
+                alert1.show();
                 return true;
             }
         });

@@ -119,7 +119,12 @@ public class EventsFragment extends Fragment {
             System.out.println(dateMonth);
             System.out.println(dateDay);
             System.out.println(dateYear);
+
+
         }
+
+
+
 
 
         }
