@@ -21,6 +21,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.sql.Array;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class EventsFragment extends Fragment {
@@ -39,6 +42,7 @@ public class EventsFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
 
+
         db.collection("Events").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -53,6 +57,8 @@ public class EventsFragment extends Fragment {
                         String description = d.getString("Description");
 
                         createEvent(name,date,startTime,endTime,location,description);
+
+                        eventNotification(name,date,startTime,endTime,location,description);
                     }
 
                 }
@@ -79,6 +85,37 @@ public class EventsFragment extends Fragment {
             eventTxt.setText("Name:" + name + "\n" + "Date:" + date + "\n" + "StartTime:" + startTime
                     + "\n" + "EndTime:" + endTime + "\n" + "Location:" + location + "\n" + "Description:" + description + "\n");
             linear.addView(eventTxt);
+        }
+
+
+        private void eventNotification(String name, String date, String startTime, String endTime, String location, String description) {
+
+        /*the notification should only go through at the right time so need to get the current date and time
+        * Need to use Calendar instead of java.time because of minimum API's
+        * */
+
+        Calendar rightNow = Calendar.getInstance();
+        int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
+        int currentMin = rightNow.get(Calendar.MINUTE);
+
+        int currentDay = rightNow.get(Calendar.DAY_OF_MONTH);
+        //starts at 0 so need to add 1 to the month.
+        int currentMonth = rightNow.get(Calendar.MONTH) + 1;
+        int currentYear = rightNow.get(Calendar.YEAR);
+
+        int startHour = Integer.parseInt(startTime.substring(0,startTime.indexOf(':')));
+        int startMin = Integer.parseInt(startTime.substring(startTime.indexOf(':')+1));
+
+
+        if(!date.isEmpty()) {
+            String dateMonth = (date.substring(0, date.indexOf("/")));
+            String dateDay = (date.substring(date.indexOf("/") + 1, date.indexOf("/", 3)));
+            String dateYear = (date.substring(date.indexOf(date.indexOf("/", 3))));
+
+            System.out.println(dateMonth);
+            System.out.println(dateDay);
+            System.out.println(dateYear);
+        }
 
 
         }
