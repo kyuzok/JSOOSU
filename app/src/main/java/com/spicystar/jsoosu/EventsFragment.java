@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -60,21 +62,12 @@ public class EventsFragment extends Fragment {
                         createEvent(name,date,startTime,endTime,location,description);
 
 
-//                        eventNotification(name,date,startTime,endTime,location,description);
+                        eventNotification(name,date,startTime,endTime,location,description);
                     }
 
                 }
             }
         });
-
-        //temporary fix to the last event not showing up
-
-        View tempFix = new View(this.getActivity());
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        float height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, dm);
-        tempFix.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,Math.round(height), Gravity.BOTTOM));
-        tempFix.setBackgroundColor(Color.BLACK);
-        linear.addView(tempFix);
 
 
         return v;
@@ -105,40 +98,45 @@ public class EventsFragment extends Fragment {
         * Need to use Calendar instead of java.time because of minimum API's
         * */
 
-        Calendar rightNow = Calendar.getInstance();
-        int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
-        int currentMin = rightNow.get(Calendar.MINUTE);
+            Calendar rightNow = Calendar.getInstance();
+            int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
+            int currentMin = rightNow.get(Calendar.MINUTE);
 
-        int currentDay = rightNow.get(Calendar.DAY_OF_MONTH);
-        //starts at 0 so need to add 1 to the month.
-        int currentMonth = rightNow.get(Calendar.MONTH) + 1;
-        int currentYear = rightNow.get(Calendar.YEAR);
+             int currentDay = rightNow.get(Calendar.DAY_OF_MONTH);
+            //starts at 0 so need to add 1 to the month.
+            int currentMonth = rightNow.get(Calendar.MONTH) + 1;
+            int currentYear = rightNow.get(Calendar.YEAR);
 
-        int startHour = Integer.parseInt(startTime.substring(0,startTime.indexOf(':')));
-        int startMin = Integer.parseInt(startTime.substring(startTime.indexOf(':')+1));
+            int startHour = Integer.parseInt(startTime.substring(0,startTime.indexOf(':')));
+            int startMin = Integer.parseInt(startTime.substring(startTime.indexOf(':')+1));
 
-
-        if(!date.isEmpty()) {
             //use dateSub to reduce the size of String date every step.
             String dateSub = date;
-            String dateMonth = dateSub.substring(0, dateSub.indexOf("/"));
+             int dateMonth = Integer.parseInt(dateSub.substring(0, dateSub.indexOf("/")));
             dateSub = dateSub.substring(dateSub.indexOf("/") + 1);
-            String dateDay = dateSub.substring(0, dateSub.indexOf("/"));
+            int dateDay = Integer.parseInt(dateSub.substring(0, dateSub.indexOf("/")));
             dateSub = dateSub.substring(dateSub.indexOf("/") + 1);
-            String dateYear = dateSub;
-
-            System.out.println(dateMonth);
-            System.out.println(dateDay);
-            System.out.println(dateYear);
+            int dateYear = Integer.parseInt(dateSub);
 
 
-        }
+            if((currentHour == startHour) && (currentMin == startMin) && (currentDay == dateDay) && (currentMonth == dateMonth) && (currentYear == dateYear)) {
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getActivity(), "hi")
+                        .setContentTitle(name)
+                        .setContentText(location)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this.getActivity());
+
+                // notificationId is a unique int for each notification that you must define
+                notificationManager.notify(1, builder.build());
+
+            }
 
 
 
-
-
-        }
+         }
 
 
 
