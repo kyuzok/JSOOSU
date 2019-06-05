@@ -108,11 +108,13 @@ public class EventsFragment extends Fragment {
 
 
         if(!date.isEmpty()) {
-            //currently hard-coding integers (can only be used if MDY are 2,2,4 digits for sure)
+            //use dateSub to reduce the size of String date every step.
             String dateSub = date;
-            String dateMonth = (date.substring(0, 2));
-            String dateDay = (date.substring(3, 5));
-            String dateYear = (date.substring(6));
+            String dateMonth = dateSub.substring(0, dateSub.indexOf("/"));
+            dateSub = dateSub.substring(dateSub.indexOf("/") + 1);
+            String dateDay = dateSub.substring(0, dateSub.indexOf("/"));
+            dateSub = dateSub.substring(dateSub.indexOf("/") + 1);
+            String dateYear = dateSub;
 
             System.out.println(dateMonth);
             System.out.println(dateDay);
