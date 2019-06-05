@@ -1,10 +1,12 @@
 package com.spicystar.jsoosu;
 
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         selectedFragment).commit();
+
                 return true;
                 }
             };
 
+    }
 
-}
+
+
