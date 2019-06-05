@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,12 +59,22 @@ public class EventsFragment extends Fragment {
 
                         createEvent(name,date,startTime,endTime,location,description);
 
+
 //                        eventNotification(name,date,startTime,endTime,location,description);
                     }
 
                 }
             }
         });
+
+        //temporary fix to the last event not showing up
+
+        View tempFix = new View(this.getActivity());
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        float height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, dm);
+        tempFix.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,Math.round(height), Gravity.BOTTOM));
+        tempFix.setBackgroundColor(Color.BLACK);
+        linear.addView(tempFix);
 
 
         return v;

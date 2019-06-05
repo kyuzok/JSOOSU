@@ -50,7 +50,7 @@ public class EventAddActivity extends AppCompatActivity implements View.OnClickL
         //implement onclick listener for button
         btnAdd.setOnClickListener(this);
 
-
+//https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
 
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
