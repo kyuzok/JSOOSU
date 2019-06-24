@@ -1,5 +1,9 @@
 package com.spicystar.jsoosu;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -94,53 +98,59 @@ public class EventsFragment extends Fragment {
 
         private void eventNotification(String name, String date, String startTime, String endTime, String location, String description) {
 
-        /*the notification should only go through at the right time so need to get the current date and time
-        * Need to use Calendar instead of java.time because of minimum API's
-        * */
+            /*the notification should only go through at the right time so need to get the current date and time
+             * Need to use Calendar instead of java.time because of minimum API's
+             * */
 
             Calendar rightNow = Calendar.getInstance();
             int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
             int currentMin = rightNow.get(Calendar.MINUTE);
 
-             int currentDay = rightNow.get(Calendar.DAY_OF_MONTH);
+            int currentDay = rightNow.get(Calendar.DAY_OF_MONTH);
             //starts at 0 so need to add 1 to the month.
             int currentMonth = rightNow.get(Calendar.MONTH) + 1;
             int currentYear = rightNow.get(Calendar.YEAR);
 
-            int startHour = Integer.parseInt(startTime.substring(0,startTime.indexOf(':')));
-            int startMin = Integer.parseInt(startTime.substring(startTime.indexOf(':')+1));
+            int startHour = Integer.parseInt(startTime.substring(0, startTime.indexOf(':')));
+            int startMin = Integer.parseInt(startTime.substring(startTime.indexOf(':') + 1));
 
             //use dateSub to reduce the size of String date every step.
             String dateSub = date;
-             int dateMonth = Integer.parseInt(dateSub.substring(0, dateSub.indexOf("/")));
+            int dateMonth = Integer.parseInt(dateSub.substring(0, dateSub.indexOf("/")));
             dateSub = dateSub.substring(dateSub.indexOf("/") + 1);
             int dateDay = Integer.parseInt(dateSub.substring(0, dateSub.indexOf("/")));
             dateSub = dateSub.substring(dateSub.indexOf("/") + 1);
             int dateYear = Integer.parseInt(dateSub);
 
-
-            if((currentHour == startHour) && (currentMin == startMin) && (currentDay == dateDay) && (currentMonth == dateMonth) && (currentYear == dateYear)) {
-
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getActivity(), "hi")
-                        .setContentTitle(name)
-                        .setContentText(location)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+            System.out.println(currentHour + " " + startHour);
+            System.out.println(currentMin + " " + startMin);
+            System.out.println(currentDay + " " + dateDay);
+            System.out.println(currentMonth + " " + dateMonth);
+            System.out.println(currentYear + " " + dateYear);
 
 
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this.getActivity());
+            if ((currentHour == startHour) && (currentMin == startMin) && (currentDay == dateDay) && (currentMonth == dateMonth) /*&& (currentYear == dateYear)*/) {
 
-                // notificationId is a unique int for each notification that you must define
-                notificationManager.notify(1, builder.build());
+
+                System.out.println("in the if statement");
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getActivity())
+                        .setSmallIcon(R.drawable.ic_event_available_black_24dp)
+                        .setContentTitle("Notifications Example")
+                        .setContentText("This is a test notification")
+                        //removes the notificaiton automatically when the user taps it.
+                        .setAutoCancel(true);
+
+                NotificationManager mNotificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+                // notificationID allows you to update the notification later on.
+                mNotificationManager.notify(0, builder.build());
+
+
 
             }
 
 
-
-         }
-
-
-
-
+        }
 
 
 
