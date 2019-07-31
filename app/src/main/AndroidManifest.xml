@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventDeleteActivity"/>
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+        <activity android:name=".NotifyEventActivity"></activity>
+        <activity android:name=".EventDeleteActivity" />
         <activity android:name=".EventEditActivity" />
         <activity android:name=".EventAddActivity" />
         <activity android:name=".ContactActivity" />

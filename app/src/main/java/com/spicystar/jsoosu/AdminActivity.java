@@ -12,6 +12,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     private Button AddEvent;
     private Button EditEvent;
     private Button DeleteEvent;
+    private Button NotifyEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,12 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
             AddEvent = findViewById(R.id.btnAddEvent);
             EditEvent = findViewById(R.id.btnEditEvent);
             DeleteEvent = findViewById(R.id.btnDeleteEvent);
+            NotifyEvent = findViewById(R.id.btnNotifyEvent);
 
             AddEvent.setOnClickListener(this);
             EditEvent.setOnClickListener(this);
             DeleteEvent.setOnClickListener(this);
+            NotifyEvent.setOnClickListener(this);
 
 
 
@@ -45,6 +48,10 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
            case R.id.btnDeleteEvent:
                Intent deletePage = new Intent(this, EventDeleteActivity.class);
                startActivity(deletePage);
+               break;
+           case R.id.btnNotifyEvent:
+               Intent notifyPage = new Intent(this, NotifyEventActivity.class);
+               startActivity(notifyPage);
                break;
        }
 

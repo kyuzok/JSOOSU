@@ -137,7 +137,7 @@ public class EventsFragment extends Fragment {
                         .setSmallIcon(R.drawable.ic_event_available_black_24dp)
                         .setContentTitle("Notifications Example")
                         .setContentText("This is a test notification")
-                        //removes the notificaiton automatically when the user taps it.
+                        //removes the notification automatically when the user taps it.
                         .setAutoCancel(true);
 
                 NotificationManager mNotificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
