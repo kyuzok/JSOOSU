@@ -1,8 +1,9 @@
 package com.spicystar.jsoosu;
 
-import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 
-public class EventDeleteActivity extends AppCompatActivity {
+public class NotifyEventActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private LinearLayout linear;
@@ -23,7 +24,7 @@ public class EventDeleteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_delete);
+        setContentView(R.layout.activity_notify_event);
 
         linear = findViewById(R.id.linear);
 
@@ -47,8 +48,8 @@ public class EventDeleteActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
 
     private void buttons(final String name) {
 
@@ -60,27 +61,18 @@ public class EventDeleteActivity extends AppCompatActivity {
 
         btn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public boolean onLongClick(final View v) {
-                AlertDialog.Builder confirmer = new AlertDialog.Builder(EventDeleteActivity.this);
-                confirmer.setMessage("Are you sure you want to delete this event?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //removes button from view
-                        linear.removeView(v);
-                        //removes the data from database
-                        db.collection("Events").document(name).delete();
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog alert1 = confirmer.create();
-                alert1.show();
+            public boolean onLongClick(View view) {
+                notifyEvent(name);
+
                 return true;
             }
         });
+
+    }
+
+    private void notifyEvent(final String name) {
+
+
 
     }
 
